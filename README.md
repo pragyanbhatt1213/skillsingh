@@ -1,36 +1,157 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SkillSingh
+
+A powerful resume parsing and skill matching platform built with Next.js, Express, and Supabase.
+
+## Technology Stack
+
+### Frontend
+* React.js
+* Tailwind CSS
+* Next.js
+
+### Backend
+* Node.js with Express
+* Supabase (Database)
+
+### Document Processing
+* resume-parser npm package
+* pdf.js
+* docx
+
+### AI/ML Models
+* Hugging Face's LayoutLM
+* Fine-tuned BERT models
+* mBART-50
+* XLM-RoBERTa
+* TF-IDF, Word2Vec/GloVe
+* Tesseract OCR
+* ResNet-based models
 
 ## Getting Started
 
-First, run the development server:
+Follow these steps to get the project running on your local machine:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### Prerequisites
+
+- Node.js (v16.0 or higher)
+- npm (v7.0 or higher)
+- Git
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/skillsingh.git
+   cd skillsingh
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables**
+   
+   Create a `.env.local` file in the root directory and add your Supabase credentials:
+   
+   **Windows PowerShell:**
+   ```powershell
+   echo "NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key" | Out-File -FilePath ".env.local" -Encoding utf8
+   ```
+   
+   **Mac/Linux:**
+   ```bash
+   echo "NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key" > .env.local
+   ```
+
+4. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+
+5. **Start the Express backend server** (in a new terminal)
+   ```bash
+   npm run server
+   ```
+
+6. **Or run both frontend and backend together**
+   ```bash
+   npm run dev:all
+   ```
+
+7. **Access the application**
+   
+   Open [http://localhost:3000](http://localhost:3000) in your browser to see the application running.
+
+## Project Structure
+
+```
+skillsingh/
+├── src/
+│   ├── app/                    # Next.js App Router pages
+│   │   ├── (auth)/             # Authentication route group
+│   │   │   ├── login/
+│   │   │   └── register/
+│   │   ├── (dashboard)/        # Dashboard route group
+│   │   │   ├── candidates/
+│   │   │   ├── jobs/
+│   │   │   ├── matching/
+│   │   │   ├── resume-parser/
+│   │   │   └── settings/
+│   │   ├── api/                # API routes
+│   │   ├── page.tsx            # Home page
+│   │   └── layout.tsx          # Root layout
+│   ├── components/             # React components
+│   │   ├── ui/                 # UI components
+│   │   ├── forms/              # Form components
+│   │   └── dashboard/          # Dashboard components
+│   └── lib/                    # Utility functions and clients
+│       ├── utils/              # Utility functions
+│       ├── supabase/           # Supabase client
+│       └── ai/                 # AI models and utilities
+├── server/                     # Express backend
+│   ├── routes/                 # API routes
+│   ├── controllers/            # Route controllers
+│   ├── middlewares/            # Express middlewares
+│   ├── models/                 # Data models
+│   └── index.js                # Server entry point
+├── public/                     # Static files
+├── .env.local                  # Environment variables
+├── package.json                # Project dependencies
+└── README.md                   # Project documentation
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Scripts
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```json
+"scripts": {
+  "dev": "next dev",
+  "build": "next build",
+  "start": "next start",
+  "lint": "next lint",
+  "server": "node server/index.js",
+  "dev:all": "concurrently \"npm run dev\" \"npm run server\""
+}
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Features
 
-## Learn More
+- **Resume Parsing**: Extract structured data from resumes in multiple formats
+- **Skill Identification**: AI-powered identification of skills from resume text
+- **Multilingual Support**: Process resumes in different languages
+- **Job Matching**: Match candidate skills with job requirements
+- **Interactive Dashboard**: View and manage candidates and job listings
 
-To learn more about Next.js, take a look at the following resources:
+## License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Contributing
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
